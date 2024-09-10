@@ -9,7 +9,7 @@ public class StringCalculator {
         String[] commaSeperatedStrings = inputString.split(",");
         Integer sum = 0;
         for(String string:commaSeperatedStrings){
-            sum += Integer.parseInt(string);
+            sum += Integer.parseInt(string.trim());
         }
         return sum;
     }
