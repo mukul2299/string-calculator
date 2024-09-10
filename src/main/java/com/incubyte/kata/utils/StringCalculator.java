@@ -2,9 +2,10 @@ package com.incubyte.kata.utils;
 
 public class StringCalculator {
     public static Integer add(String inputString) {
-        if("".equals(inputString.trim())){
+        inputString=inputString.trim();
+        if (inputString.isEmpty()) {
             return 0;
         }
-        return null;
+        return Integer.parseInt(inputString);
     }
 }

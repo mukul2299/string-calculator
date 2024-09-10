@@ -17,6 +17,6 @@ class StringCalculatorTest {
 
     @Test
     public void testAddSingleNumber() {
-        assertEquals(1, StringCalculator.add("1")); // Failing
+        assertEquals(1, StringCalculator.add("1")); // Passing
     }
 }
