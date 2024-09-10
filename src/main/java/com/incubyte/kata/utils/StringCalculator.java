@@ -6,6 +6,11 @@ public class StringCalculator {
         if (inputString.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(inputString);
+        String[] commaSeperatedStrings = inputString.split(",");
+        Integer sum = 0;
+        for(String string:commaSeperatedStrings){
+            sum += Integer.parseInt(string);
+        }
+        return sum;
     }
 }

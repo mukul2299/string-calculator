@@ -22,6 +22,6 @@ class StringCalculatorTest {
 
     @Test
     public void testAddTwoNumbers() {
-        assertEquals(3, StringCalculator.add("1,2")); // Failing-> Number Format Exception
+        assertEquals(3, StringCalculator.add("1,2")); // Passing
     }
 }
