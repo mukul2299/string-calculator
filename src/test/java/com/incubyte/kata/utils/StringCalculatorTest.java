@@ -33,7 +33,13 @@ class StringCalculatorTest {
     @Test
     public void testAddWithMultipleNumbersWithSpaces() {
         assertEquals(6, StringCalculator.add("1, 2, 3"));
+    }
+
+    @Test
+    public void testAddWithNewLines() {
+        assertEquals(6, StringCalculator.add("1\n2,3"));
         // Failing-> Number Format Exception
     }
+
 
 }
