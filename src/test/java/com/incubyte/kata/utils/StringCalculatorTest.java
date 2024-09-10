@@ -9,4 +9,9 @@ class StringCalculatorTest {
     public void testAddEmptyString() {
         assertEquals(0, StringCalculator.add("")); // Passing
     }
+
+    @Test
+    public void testAddEmptySpacesString() {
+        assertEquals(0, StringCalculator.add("  ")); // Failing-> Expected:0 Actual:null
+    }
 }
