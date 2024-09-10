@@ -19,4 +19,9 @@ class StringCalculatorTest {
     public void testAddSingleNumber() {
         assertEquals(1, StringCalculator.add("1")); // Passing
     }
+
+    @Test
+    public void testAddTwoNumbers() {
+        assertEquals(3, StringCalculator.add("1,2")); // Failing-> Number Format Exception
+    }
 }
