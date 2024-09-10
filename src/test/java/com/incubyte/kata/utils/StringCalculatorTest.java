@@ -38,7 +38,6 @@ class StringCalculatorTest {
     @Test
     public void testAddWithNewLines() {
         assertEquals(6, StringCalculator.add("1\n2,3"));
-        // Failing-> Number Format Exception
     }
 
 
