@@ -2,7 +2,9 @@ package com.incubyte.kata.utils;
 
 public class StringCalculator {
     public static Integer add(String inputString) {
-        // TO-DO
+        if("".equals(inputString)){
+            return 0;
+        }
         return null;
     }
 }

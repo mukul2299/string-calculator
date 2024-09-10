@@ -7,6 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class StringCalculatorTest {
     @Test
     public void testAddEmptyString() {
-        assertEquals(0, StringCalculator.add("")); // Failing
+        assertEquals(0, StringCalculator.add("")); // Passing
     }
 }
