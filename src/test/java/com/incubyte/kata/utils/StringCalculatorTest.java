@@ -12,6 +12,6 @@ class StringCalculatorTest {
 
     @Test
     public void testAddEmptySpacesString() {
-        assertEquals(0, StringCalculator.add("  ")); // Failing-> Expected:0 Actual:null
+        assertEquals(0, StringCalculator.add("  ")); // Passing
     }
 }
