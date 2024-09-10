@@ -30,4 +30,10 @@ class StringCalculatorTest {
         assertEquals(10, StringCalculator.add("1,2,3,4"));
     }
 
+    @Test
+    public void testAddWithMultipleNumbersWithSpaces() {
+        assertEquals(6, StringCalculator.add("1, 2, 3"));
+        // Failing-> Number Format Exception
+    }
+
 }
