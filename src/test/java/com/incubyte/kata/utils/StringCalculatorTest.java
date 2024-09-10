@@ -48,7 +48,6 @@ class StringCalculatorTest {
     @Test
     public void testAddWithNewLinesAndCommasAndSpacesWithEmptyString() {
         assertEquals(10, StringCalculator.add("1 \n2,  , 3 ,4"));
-//        Number Format Exception
     }
 
 }
