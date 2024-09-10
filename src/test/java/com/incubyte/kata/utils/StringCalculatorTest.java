@@ -14,4 +14,9 @@ class StringCalculatorTest {
     public void testAddEmptySpacesString() {
         assertEquals(0, StringCalculator.add("  ")); // Passing
     }
+
+    @Test
+    public void testAddSingleNumber() {
+        assertEquals(1, StringCalculator.add("1")); // Failing
+    }
 }
