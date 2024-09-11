@@ -53,7 +53,11 @@ class StringCalculatorTest {
     @Test
     public void testAddWithCustomDelimiter() {
         assertEquals(3, StringCalculator.add("//;\n1;2"));
-        // failing -> Number Format Exception
+    }
+
+    @Test
+    public void testAddWithCustomDelimiterAndSpaces() {
+        assertEquals(10, StringCalculator.add("//_\n 1 _2_3_ 4 "));
     }
 
 }

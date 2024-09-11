@@ -6,7 +6,14 @@ public class StringCalculator {
         if (inputString.isEmpty()) {
             return 0;
         }
-        String[] commaSeperatedStrings = inputString.split("[,\\n]");
+        String delimiter="[,\\n]";
+        // Check for custom delimiter
+        if (inputString.startsWith("//")) {
+            int delimiterEndIndex = inputString.indexOf("\n");
+            delimiter = inputString.substring(2, delimiterEndIndex);
+            inputString = inputString.substring(delimiterEndIndex + 1);
+        }
+        String[] commaSeperatedStrings = inputString.split(delimiter);
         Integer sum = 0;
         for(String string:commaSeperatedStrings){
             string = string.trim();
