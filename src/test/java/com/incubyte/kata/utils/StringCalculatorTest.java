@@ -50,4 +50,10 @@ class StringCalculatorTest {
         assertEquals(10, StringCalculator.add("1 \n2,  , 3 ,4"));
     }
 
+    @Test
+    public void testAddWithCustomDelimiter() {
+        assertEquals(3, StringCalculator.add("//;\n1;2"));
+        // failing -> Number Format Exception
+    }
+
 }
