@@ -16,10 +16,10 @@ public class StringCalculator {
             delimiter = inputString.substring(2, delimiterEndIndex);
             inputString = inputString.substring(delimiterEndIndex + 1);
         }
-        String[] commaSeperatedStrings = inputString.split(delimiter);
+        String[] delimiterSeperatedStrings = inputString.split(delimiter);
         int sum = 0;
         List<Integer> negatives = new ArrayList<>();
-        for (String string : commaSeperatedStrings) {
+        for (String string : delimiterSeperatedStrings) {
             string = string.trim();
             if (!string.isEmpty()) {
                 int number = Integer.parseInt(string);
