@@ -60,4 +60,13 @@ class StringCalculatorTest {
         assertEquals(10, StringCalculator.add("//_\n 1 _2_3_ 4 "));
     }
 
+    @Test
+    public void testAddWithNegativeNumber() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            StringCalculator.add("1,-2,3");
+        });
+        assertEquals("Negative numbers not allowed: -2", exception.getMessage());
+//        Failing
+    }
+
 }
