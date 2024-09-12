@@ -1,5 +1,6 @@
 package com.incubyte.kata.utils;
 
+import com.incubyte.kata.exceptions.InvalidCharacterException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -74,6 +75,14 @@ class StringCalculatorTest {
             StringCalculator.add("1,-2,-3");
         });
         assertEquals("Negative numbers not allowed: [-2, -3]", exception.getMessage());
+    }
+
+    @Test
+    public void testAddWithInvalidCharacters() {
+        Exception exception = assertThrows(InvalidCharacterException.class, () -> {
+            StringCalculator.add("1,-2,-3,a , b");
+        });
+        // Failing -> Giving Number Format Exception
     }
 
 }
