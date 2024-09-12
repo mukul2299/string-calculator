@@ -1,5 +1,7 @@
 package com.incubyte.kata.utils;
 
+import com.incubyte.kata.exceptions.InvalidCharacterException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +24,12 @@ public class StringCalculator {
         for (String string : delimiterSeperatedStrings) {
             string = string.trim();
             if (!string.isEmpty()) {
-                int number = Integer.parseInt(string);
+                int number;
+                try {
+                    number = Integer.parseInt(string);
+                } catch (NumberFormatException e) {
+                    throw new InvalidCharacterException(e.getMessage());
+                }
                 if (number < 0) {
                     negatives.add(number);
                 } else {

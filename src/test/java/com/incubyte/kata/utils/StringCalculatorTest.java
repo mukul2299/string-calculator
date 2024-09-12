@@ -81,8 +81,21 @@ class StringCalculatorTest {
     public void testAddWithInvalidCharacters() {
         Exception exception = assertThrows(InvalidCharacterException.class, () -> {
             StringCalculator.add("1,-2,-3,a , b");
-        });
-        // Failing -> Giving Number Format Exception
+        }); //Passing
+    }
+
+    @Test
+    public void testAddWithInvalidCharactersAndCustomDelimiter() {
+        assertThrows(InvalidCharacterException.class, () -> {
+            StringCalculator.add("//_\na_1_2_3_4_b");
+        }); // Passing
+    }
+
+    @Test
+    public void testAddWithInvalidCharactersAndCustomDelimiterAndSpaces() {
+        assertThrows(InvalidCharacterException.class, () -> {
+            StringCalculator.add("//_\n a _1_ 2_3 _4_b ");
+        }); // Passing
     }
 
 }
