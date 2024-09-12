@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     private static final String DEFAULT_DELIMITER = "[,\\n]";
+    private static final String INVALID_CHAR_REGEX = "[^0-9%s\\s-]|-(?![0-9])";
+
     public static Integer add(String inputString) {
         inputString = inputString.trim();
         if (inputString.isEmpty()) {
@@ -21,12 +23,7 @@ public class StringCalculator {
             inputString = inputString.substring(inputString.indexOf("\n") + 1);
         }
         // Identifying invalid characters using regex
-        String inValidCharacterRegEx = "[^0-9"+delimiter+"\\s-]|-(?![0-9])";
-        Pattern invalidCharacterPattern= Pattern.compile(inValidCharacterRegEx);
-        Matcher invalidCharacterMatcher = invalidCharacterPattern.matcher(inputString);
-        if(invalidCharacterMatcher.find()){
-            throw new InvalidCharacterException();
-        }
+        validateInput(inputString,delimiter);
         String[] delimiterSeperatedStrings = inputString.split(delimiter);
         int sum = 0;
         List<Integer> negatives = new ArrayList<>();
@@ -51,5 +48,14 @@ public class StringCalculator {
         int delimiterEndIndex = inputString.indexOf("\n");
         String customDelimiter = inputString.substring(2, delimiterEndIndex);
         return Pattern.quote(customDelimiter);
+    }
+
+    private static void validateInput(String inputString, String delimiter) {
+        String inValidCharacterRegEx = String.format(INVALID_CHAR_REGEX, delimiter);
+        Pattern invalidCharacterPattern = Pattern.compile(inValidCharacterRegEx);
+        Matcher invalidCharacterMatcher = invalidCharacterPattern.matcher(inputString);
+        if (invalidCharacterMatcher.find()) {
+            throw new InvalidCharacterException();
+        }
     }
 }
