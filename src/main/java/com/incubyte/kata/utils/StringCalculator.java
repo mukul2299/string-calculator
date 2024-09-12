@@ -23,25 +23,8 @@ public class StringCalculator {
             inputString = inputString.substring(inputString.indexOf("\n") + 1);
         }
         // Identifying invalid characters using regex
-        validateInput(inputString,delimiter);
-        String[] delimiterSeperatedStrings = inputString.split(delimiter);
-        int sum = 0;
-        List<Integer> negatives = new ArrayList<>();
-        for (String string : delimiterSeperatedStrings) {
-            string = string.trim();
-            if (!string.isEmpty()) {
-                int number = Integer.parseInt(string);
-                if (number < 0) {
-                    negatives.add(number);
-                } else {
-                    sum += number;
-                }
-            }
-        }
-        if (!negatives.isEmpty()) {
-            throw new IllegalArgumentException("Negative numbers not allowed: " + negatives);
-        }
-        return sum;
+        validateInput(inputString, delimiter);
+        return calculateSum(inputString, delimiter);
     }
 
     private static String extractCustomDelimiter(String inputString) {
@@ -57,5 +40,26 @@ public class StringCalculator {
         if (invalidCharacterMatcher.find()) {
             throw new InvalidCharacterException();
         }
+    }
+
+    private static int calculateSum(String inputString, String delimiter) {
+        String[] delimiterSeperatedStrings = inputString.split(delimiter);
+        List<Integer> negatives = new ArrayList<>();
+        int sum = 0;
+        for (String string : delimiterSeperatedStrings) {
+            string = string.trim();
+            if (!string.isEmpty()) {
+                int number = Integer.parseInt(string);
+                if (number < 0) {
+                    negatives.add(number);
+                } else {
+                    sum += number;
+                }
+            }
+        }
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negative numbers not allowed: " + negatives);
+        }
+        return sum;
     }
 }
