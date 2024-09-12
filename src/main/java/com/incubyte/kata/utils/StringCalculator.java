@@ -8,17 +8,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
+    private static final String DEFAULT_DELIMITER = "[,\\n]";
     public static Integer add(String inputString) {
         inputString = inputString.trim();
         if (inputString.isEmpty()) {
             return 0;
         }
-        String delimiter = "[,\\n]";
+        String delimiter = DEFAULT_DELIMITER;
         // Check for custom delimiter
         if (inputString.startsWith("//")) {
-            int delimiterEndIndex = inputString.indexOf("\n");
-            delimiter = inputString.substring(2, delimiterEndIndex);
-            inputString = inputString.substring(delimiterEndIndex + 1);
+            delimiter = extractCustomDelimiter(inputString);
+            inputString = inputString.substring(inputString.indexOf("\n") + 1);
         }
         // Identifying invalid characters using regex
         String inValidCharacterRegEx = "[^0-9"+delimiter+"\\s-]|-(?![0-9])";
@@ -45,5 +45,11 @@ public class StringCalculator {
             throw new IllegalArgumentException("Negative numbers not allowed: " + negatives);
         }
         return sum;
+    }
+
+    private static String extractCustomDelimiter(String inputString) {
+        int delimiterEndIndex = inputString.indexOf("\n");
+        String customDelimiter = inputString.substring(2, delimiterEndIndex);
+        return Pattern.quote(customDelimiter);
     }
 }
